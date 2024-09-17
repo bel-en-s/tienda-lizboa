@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    margin: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    /* background-image: url("https://user-images.githubusercontent.com/26748614/96337246-f14d4580-1085-11eb-8793-a86d929e034d.jpg"); */
+    background-size: cover;
+    backdrop-filter:  brightness(50%);
+
+}
+
+canvas {
+    display: block;
+}
+
+.logo{
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 300;
+    font-stretch: 160%;
+    mix-blend-mode: difference;
+  }
+
+  .controls-container{
+    position: absolute;
+    top: 3%;
+  }
+
+#canvas_container {
+    width: 100%;
+    height: 100vh;
+}
+
+.button-container {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display:flex; 
+    gap: 1rem;  
+}
+
+button{
+    font-family: 'Roboto', sans-serif;
+    font-weight:200;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.9em;
+    background: #000000;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+button:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+button:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+    font-family: "Roboto", system-ui;
+    font-weight: 100;
+    font-style: italic;
+}
+
+/* Spinner animation */
+#loader .spinner {
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    border-top: 6px solid white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Loading text */
+#loader p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
