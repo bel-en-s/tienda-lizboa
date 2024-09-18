@@ -65,19 +65,18 @@ function init() {
     // nucleus = new THREE.Mesh(icosahedronGeometry, lambertMaterial);
     // scene.add(nucleus);
 
-    //load tienda as a glb -- HELP
-   /* Load GLB model with loader */
+ 
    const gltfLoader = new THREE.GLTFLoader();
    loaderContainer.style.display = 'flex'; // Show loader
 
-   gltfLoader.load('assets/test.glb', function (gltf) {
+   gltfLoader.load('assets/itinerante1.glb', function (gltf) {
        tienda = gltf.scene;
        tienda.scale.set(100, 100, 100);
        scene.add(tienda);
-       loaderContainer.style.display = 'none'; // Hide loader when the model is loaded
+       loaderContainer.style.display = 'none'; 
    }, undefined, function (error) {
        console.error('An error occurred while loading the model:', error);
-       loaderContainer.style.display = 'none'; // Hide loader in case of an error
+       loaderContainer.style.display = 'none'; 
    });
     /*    Sphere  Background   */
     textureSphereBg.anisotropy = 16;
