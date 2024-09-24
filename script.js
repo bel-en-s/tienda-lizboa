@@ -20,25 +20,31 @@ function init() {
     scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.01, 1000);
-    camera.position.set(30, 0,  -40); 
+    camera.position.set(-29.48, -22.18, -110.09); 
 
-    const directionalLight = new THREE.DirectionalLight("#ffffff", 0.5); // Reduced intensity
+    // Higher intensity for brighter model
+    const directionalLight = new THREE.DirectionalLight("#ffffff", 1.5);
     directionalLight.position.set(50, 100, -40); // Higher angle for softer shadows
-    directionalLight.castShadow = true;
-    directionalLight.shadow.mapSize.width = 2048;  // Shadow map size for better quality shadows
-    directionalLight.shadow.mapSize.height = 2048;
-    directionalLight.shadow.camera.near = 0.5;
-    directionalLight.shadow.camera.far = 500;
+   
     scene.add(directionalLight);
     
-    // Slightly brighter ambient light to fill shadows without overwhelming the scene
-    let ambientLight = new THREE.AmbientLight("#ffffff", 0.3); // Increased to 0.3 for better illumination
-    scene.add(ambientLight);
-    
-    // Optional: Add a point light for subtle accent lighting
-    const pointLight = new THREE.PointLight("#ffffff", 0.3, 200); // Low intensity for subtle lighting
+    // Environment lighting to simulate indirect illumination
+    const envLight = new THREE.AmbientLight("#ffffff", 0.5);
+    scene.add(envLight);
+
+    // Point light for subtle accent lighting
+    const pointLight = new THREE.PointLight("#ffffff", 0.5, 200);
     pointLight.position.set(0, 50, 0); // Positioned above the scene to simulate bounce lighting
     scene.add(pointLight);
+    
+    // // Slightly brighter ambient light to fill shadows without overwhelming the scene
+    // let ambientLight = new THREE.AmbientLight("#ffffff", 0.3); // Increased to 0.3 for better illumination
+    // scene.add(ambientLight);
+    
+    // // Optional: Add a point light for subtle accent lighting
+    // const pointLight = new THREE.PointLight("#ffffff", 0.3, 200); // Low intensity for subtle lighting
+    // pointLight.position.set(0, 50, 0); // Positioned above the scene to simulate bounce lighting
+    // scene.add(pointLight);
     
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
@@ -50,25 +56,22 @@ function init() {
     controls.autoRotate = false;
     controls.autoRotateSpeed = 4;
     controls.maxDistance = 1050;
-    controls.minDistance = 50;
+    controls.minDistance = 5;
     controls.enableZoom = true;
     controls.enablePan = false;
 
-    // Block camera rotation at camera.position.x: 49.63, y: 5.48, z: 2.62
+    // Block camera rotation at camera.position.x: 49.63, z: 2.62
     controls.addEventListener('change', function() {
         if (camera.position.x > 49.63) {
             camera.position.x = 49.63;
-        }
-        if (camera.position.y > 5.48 || camera.position.y < -5.48) {
-            camera.position.y = THREE.MathUtils.clamp(camera.position.y, -5.48, 5.48);
         }
         if (camera.position.z > 2.62) {
             camera.position.z = 2.62;
         }
     });
+
     const loader = new THREE.TextureLoader();
     const textureSphereBg = loader.load('assets/sky.jpg');
-    const texturenucleus = loader.load('');
     const textureStar = loader.load("https://i.ibb.co/ZKsdYSz/p1-g3zb2a.png");
     const texture1 = loader.load("https://i.ibb.co/F8by6wW/p2-b3gnym.png");
     const texture2 = loader.load("https://i.ibb.co/yYS2yx5/p3-ttfn70.png");
@@ -78,10 +81,10 @@ function init() {
     const gltfLoader = new THREE.GLTFLoader();
     loaderContainer.style.display = 'flex'; // Show loader
 
-    gltfLoader.load('assets/itinerante-join.glb', function (gltf) {
+    gltfLoader.load('assets/itinerante-light.glb', function (gltf) {
         tienda = gltf.scene;
         tienda.scale.set(50, 50, 50); // Adjust model size as needed
-        tienda.position.set(0, -30, -100); // Place model at the center of the stars
+        tienda.position.set(120, -30, -100); // Place model at the center of the stars
         scene.add(tienda);
         loaderContainer.style.display = 'none'; // Hide loader
     }, undefined, function (error) {
@@ -124,24 +127,24 @@ function init() {
     scene.add(stars);
 
     /* Fixed Stars */
-    function createStars(texture, size, total) {
-        let pointGeometry = new THREE.Geometry();
-        let pointMaterial = new THREE.PointsMaterial({
-            size: size,
-            map: texture,
-            blending: THREE.AdditiveBlending,
-        });
+    // function createStars(texture, size, total) {
+    //     let pointGeometry = new THREE.Geometry();
+    //     let pointMaterial = new THREE.PointsMaterial({
+    //         size: size,
+    //         map: texture,
+    //         blending: THREE.AdditiveBlending,
+    //     });
 
-        for (let i = 0; i < total; i++) {
-            let radius = THREE.MathUtils.randInt(149, 70);
-            let particles = randomPointSphere(radius);
-            pointGeometry.vertices.push(particles);
-        }
-        return new THREE.Points(pointGeometry, pointMaterial);
-    }
-    scene.add(createStars(texture1, 15, 20));
-    scene.add(createStars(texture2, 5, 5));
-    scene.add(createStars(texture4, 7, 5));
+    //     for (let i = 0; i < total; i++) {
+    //         let radius = THREE.MathUtils.randInt(149, 70);
+    //         let particles = randomPointSphere(radius);
+    //         pointGeometry.vertices.push(particles);
+    //     }
+    //     return new THREE.Points(pointGeometry, pointMaterial);
+    // }
+    // scene.add(createStars(texture1, 15, 20));
+    // scene.add(createStars(texture2, 5, 5));
+    // scene.add(createStars(texture4, 7, 5));
 
     /* Random point generator for stars */
     function randomPointSphere(radius) {
