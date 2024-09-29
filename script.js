@@ -20,26 +20,11 @@ function init() {
     scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.01, 1000);
-    camera.position.set(-29.48, -22.18, -110.09); 
+    camera.position.set(-29.40, 58.17, -97.06); 
 
-    // Higher intensity for brighter model
-    const directionalLight = new THREE.DirectionalLight("#ffffff", 1.5);
-    directionalLight.position.set(50, 100, -40); // Higher angle for softer shadows
-   
-    scene.add(directionalLight);
-    
-    // Environment lighting to simulate indirect illumination
-    const envLight = new THREE.AmbientLight("#ffffff", 0.5);
-    scene.add(envLight);
-
-    // Point light for subtle accent lighting
-    const pointLight = new THREE.PointLight("#ffffff", 0.5, 200);
-    pointLight.position.set(0, 50, 0); // Positioned above the scene to simulate bounce lighting
-    scene.add(pointLight);
-    
-    // // Slightly brighter ambient light to fill shadows without overwhelming the scene
-    // let ambientLight = new THREE.AmbientLight("#ffffff", 0.3); // Increased to 0.3 for better illumination
-    // scene.add(ambientLight);
+    // Single, soft light for the entire scene
+    const light = new THREE.AmbientLight("#ffffff", 1);
+    scene.add(light);
     
     // // Optional: Add a point light for subtle accent lighting
     // const pointLight = new THREE.PointLight("#ffffff", 0.3, 200); // Low intensity for subtle lighting
@@ -81,10 +66,10 @@ function init() {
     const gltfLoader = new THREE.GLTFLoader();
     loaderContainer.style.display = 'flex'; // Show loader
 
-    gltfLoader.load('assets/itinerante-light.glb', function (gltf) {
+    gltfLoader.load('assets/TEST.glb', function (gltf) {
         tienda = gltf.scene;
         tienda.scale.set(50, 50, 50); // Adjust model size as needed
-        tienda.position.set(120, -30, -100); // Place model at the center of the stars
+        tienda.position.set(0, 0, -0); // Place model at the center of the stars
         scene.add(tienda);
         loaderContainer.style.display = 'none'; // Hide loader
     }, undefined, function (error) {
