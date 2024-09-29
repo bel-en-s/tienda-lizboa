@@ -66,7 +66,7 @@ function init() {
     const gltfLoader = new THREE.GLTFLoader();
     loaderContainer.style.display = 'flex'; // Show loader
 
-    gltfLoader.load('assets/TEST.glb', function (gltf) {
+    gltfLoader.load('assets/tienda.glb', function (gltf) {
         tienda = gltf.scene;
         tienda.scale.set(50, 50, 50); // Adjust model size as needed
         tienda.position.set(0, 0, -0); // Place model at the center of the stars
