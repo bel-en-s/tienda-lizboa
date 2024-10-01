@@ -66,10 +66,14 @@ function init() {
     const gltfLoader = new THREE.GLTFLoader();
     loaderContainer.style.display = 'flex'; // Show loader
 
-    gltfLoader.load('assets/tienda.glb', function (gltf) {
+    // Axes Helper
+    const axesHelper = new THREE.AxesHelper(1000);
+    scene.add(axesHelper);
+
+    gltfLoader.load('assets/BAKE-TEST.glb', function (gltf) {
         tienda = gltf.scene;
         tienda.scale.set(50, 50, 50); // Adjust model size as needed
-        tienda.position.set(0, 0, -0); // Place model at the center of the stars
+        tienda.position.set(200, -50, 250); 
         scene.add(tienda);
         loaderContainer.style.display = 'none'; // Hide loader
     }, undefined, function (error) {
