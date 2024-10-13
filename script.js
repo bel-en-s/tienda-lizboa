@@ -70,10 +70,10 @@ function init() {
     const axesHelper = new THREE.AxesHelper(1000);
     scene.add(axesHelper);
 
-    gltfLoader.load('assets/BAKE-TEST.glb', function (gltf) {
+    gltfLoader.load('assets/JOINED.glb', function (gltf) {
         tienda = gltf.scene;
         tienda.scale.set(50, 50, 50); // Adjust model size as needed
-        tienda.position.set(200, -50, 250); 
+        tienda.position.set(0, -100, 0); 
         scene.add(tienda);
         loaderContainer.style.display = 'none'; // Hide loader
     }, undefined, function (error) {
