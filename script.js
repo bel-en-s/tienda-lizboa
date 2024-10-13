@@ -70,7 +70,7 @@ function init() {
     const axesHelper = new THREE.AxesHelper(1000);
     scene.add(axesHelper);
 
-    gltfLoader.load('assets/JOINED.glb', function (gltf) {
+    gltfLoader.load('assets/JOINED-TEST.glb', function (gltf) {
         tienda = gltf.scene;
         tienda.scale.set(50, 50, 50); // Adjust model size as needed
         tienda.position.set(0, -100, 0); 
