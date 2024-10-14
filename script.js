@@ -45,16 +45,15 @@ function init() {
     controls.enableZoom = true;
     controls.enablePan = false;
 
-    // Block camera rotation at camera.position.x: 49.63, z: 2.62
+    // Block camera rotation at camera.position.y: -1.64
     controls.addEventListener('change', function() {
-        if (camera.position.x > 49.63) {
-            camera.position.x = 49.63;
+        if (camera.position.y < -1.64) {
+            camera.position.y = -1.64;
         }
-        if (camera.position.z > 2.62) {
-            camera.position.z = 2.62;
+        if (camera.position.y > 61.53) {
+            camera.position.y = 61.53;
         }
     });
-
     const loader = new THREE.TextureLoader();
     const textureSphereBg = loader.load('assets/sky.jpg');
     const textureStar = loader.load("https://i.ibb.co/ZKsdYSz/p1-g3zb2a.png");
@@ -70,10 +69,10 @@ function init() {
     const axesHelper = new THREE.AxesHelper(1000);
     scene.add(axesHelper);
 
-    gltfLoader.load('assets/JOINED-TEST.glb', function (gltf) {
+    gltfLoader.load('assets/JOINED-TEST-2.glb', function (gltf) {
         tienda = gltf.scene;
         tienda.scale.set(50, 50, 50); // Adjust model size as needed
-        tienda.position.set(0, -100, 0); 
+        tienda.position.set(0, -100, -50); 
         scene.add(tienda);
         loaderContainer.style.display = 'none'; // Hide loader
     }, undefined, function (error) {
