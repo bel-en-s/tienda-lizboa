@@ -20,16 +20,16 @@ function init() {
     scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.01, 1000);
-    camera.position.set(-29.40, 58.17, -97.06); 
+    camera.position.set(-29.40, 50, -200); 
 
     // Single, soft light for the entire scene
-    const light = new THREE.AmbientLight("#ffffff", 1);
+    const light = new THREE.AmbientLight("#cdf0ff", 0.7);
     scene.add(light);
     
     // // Optional: Add a point light for subtle accent lighting
-    // const pointLight = new THREE.PointLight("#ffffff", 0.3, 200); // Low intensity for subtle lighting
-    // pointLight.position.set(0, 50, 0); // Positioned above the scene to simulate bounce lighting
-    // scene.add(pointLight);
+    const pointLight = new THREE.PointLight("#ffffff", 0.87, 200); // Low intensity for subtle lighting
+    pointLight.position.set(0, 50, 0); // Positioned above the scene to simulate bounce lighting
+    scene.add(pointLight);
     
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
@@ -53,6 +53,18 @@ function init() {
         if (camera.position.y > 61.53) {
             camera.position.y = 61.53;
         }
+        if (camera.position.x < -199.26) {
+            camera.position.x = -199.26;
+        }
+        if (camera.position.x > -8.90) {
+            camera.position.x = -8.90;
+        }
+        if (camera.position.z < -244.15) {
+            camera.position.z = -244.15;
+        }
+        if (camera.position.z > -135.35) {
+            camera.position.z = -135.35;
+        }
     });
     const loader = new THREE.TextureLoader();
     const textureSphereBg = loader.load('assets/sky.jpg');
@@ -72,7 +84,7 @@ function init() {
     gltfLoader.load('assets/modelo-final-1.glb', function (gltf) {
         tienda = gltf.scene;
         tienda.scale.set(50, 50, 50); // Adjust model size as needed
-        tienda.position.set(0, -100, -50); 
+        tienda.position.set(-30, -100, -50); 
         scene.add(tienda);
         loaderContainer.style.display = 'none'; // Hide loader
     }, undefined, function (error) {
