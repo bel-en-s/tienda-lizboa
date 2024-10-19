@@ -31,6 +31,14 @@
         <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     </head>
     <body>
+        <div class="fixed-button left-button">
+            <img id="playPauseIcon" src="assets/play.png" alt="Play Button" aria-label="Play/Pause Button" />
+        </div>
+        <div class="fixed-button right-button">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <img src="assets/instagram.png" alt="Instagram Button" />
+            </a>
+        </div>
             <div class="logo">
                 <img src="assets/LOGO.png" alt="Tienda Lizboa Logo"height="auto">
             </div>
@@ -63,6 +71,7 @@
         <script defer src="./script.js"></script>
 
         <script>
+            
             const music = document.getElementById('background-music');
             const pauseButton = document.getElementById('pause');
             const fromPauseToPlay = document.getElementById('from_pause_to_play');
