@@ -35,48 +35,15 @@
                 <img src="assets/LOGO.png" alt="Tienda Lizboa Logo"height="auto">
             </div>
 
-
-        <div class="controls-container" aria-label="Music Player">
-            <div class="music-controls">
-                <svg width="550" height="104" id="pause" class="paused" role="button" aria-label="Toggle Play/Pause">
-                    <circle id="circle" cx="51" cy="51" r="50" stroke-dasharray="314" stroke-dashoffset="0" style="stroke-width:2px;stroke:white;" />
-                    <line id="line1" x1="38" y1="30" x2="38" y2="70" style="stroke-width:4px;stroke:white;stroke-linecap: round;" />
-                    <path id="line2" d="M 66 30 L 66 50 L 66 70" rx="10" ry="10" style="stroke-width:4px;stroke:white;fill:white;stroke-linejoin: round;stroke-linecap: round;">
-                        <animate
-                            attributeName="d"
-                            dur="300ms"
-                            from="M 66 30 L 66 50 L 66 70"
-                            to="M 38 30 L 70 50 L 38 70"
-                            begin="indefinite"
-                            fill="freeze"
-                            id="from_pause_to_play"
-                        />
-                    </path>
-                    <animate
-                        xlink:href="#line2"
-                        attributeName="d"
-                        dur="300ms"
-                        from="M 38 30 L 70 50 L 38 70"
-                        to="M 66 30 L 66 50 L 66 70"
-                        fill="freeze"
-                        id="from_play_to_pause"
-                        begin="indefinite"
-                    />
-                </svg>
-                <audio id="background-music" src="assets/dreaming.mp3"></audio>
-            </div>
-        </div>
-
         <!-- Main content -->
         <main>
             <div id="canvas_container" role="presentation"></div>
-
             <div class="button-container">
                 <div class="btn-cita button-85">
-                    <button type="button" aria-label="Book Your Appointment">Pedí tu cita</button>
-                </div> 
-                <div class="btn-works">
-                    <button type="button" aria-label="Visit the Store">Tienda</button>
+                    <a href="https://wa.me/5491159904242" target="_blank" rel="noopener noreferrer" aria-label="Book Your Appointment">Pedí tu cita</a>
+                </div>
+                <div class="btn-works button-85">
+                    <a href="https://tiendalizboa.empretienda.com.ar/productos" target="_blank" aria-label="Visit the Store">Tienda</a>
                 </div>
             </div>
 
@@ -84,12 +51,9 @@
                 <div class="spinner" role="status" aria-label="Loading..."></div>
                 <p style="margin-top: 1rem;">alquimizando experiencia.</p>
             </div>
-        </main>
 
-        <!-- Footer section -->
-        <footer>
-            <p>&copy; 2024 Tienda Lizboa. All rights reserved.</p>
-        </footer>
+          
+        </main>
 
         <!-- JavaScript -->
         <script defer src="https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.min.js"></script>

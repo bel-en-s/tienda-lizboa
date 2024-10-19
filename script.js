@@ -46,26 +46,27 @@ function init() {
     controls.enablePan = false;
 
     // Block camera rotation at camera.position.y: -1.64
-    controls.addEventListener('change', function() {
-        if (camera.position.y < -1.64) {
-            camera.position.y = -1.64;
-        }
-        if (camera.position.y > 61.53) {
-            camera.position.y = 61.53;
-        }
-        if (camera.position.x < -199.26) {
-            camera.position.x = -199.26;
-        }
-        if (camera.position.x > -8.90) {
-            camera.position.x = -8.90;
-        }
-        if (camera.position.z < -244.15) {
-            camera.position.z = -244.15;
-        }
-        if (camera.position.z > -135.35) {
-            camera.position.z = -135.35;
-        }
-    });
+    // controls.addEventListener('change', function() {
+    //     if (camera.position.y < -1.64) {
+    //         camera.position.y = -1.64;
+    //     }
+    //     if (camera.position.y > 61.53) {
+    //         camera.position.y = 61.53;
+    //     }
+    //     if (camera.position.x < -199.26) {
+    //         camera.position.x = -199.26;
+    //     }
+    //     if (camera.position.x > -8.90) {
+    //         camera.position.x = -8.90;
+    //     }
+    //     if (camera.position.z < -244.15) {
+    //         camera.position.z = -244.15;
+    //     }
+    //     if (camera.position.z > -135.35) {
+    //         camera.position.z = -135.35;
+    //     }
+    // });
+
     const loader = new THREE.TextureLoader();
     const textureSphereBg = loader.load('assets/sky.jpg');
     const textureStar = loader.load("https://i.ibb.co/ZKsdYSz/p1-g3zb2a.png");
@@ -78,12 +79,12 @@ function init() {
     loaderContainer.style.display = 'flex'; // Show loader
 
     // Axes Helper
-    const axesHelper = new THREE.AxesHelper(1000);
-    scene.add(axesHelper);
+    // const axesHelper = new THREE.AxesHelper(1000);
+    // scene.add(axesHelper);
 
-    gltfLoader.load('assets/modelo-final-1.glb', function (gltf) {
+    gltfLoader.load('assets/tienda-final.glb', function (gltf) {
         tienda = gltf.scene;
-        tienda.scale.set(50, 50, 50); // Adjust model size as needed
+        tienda.scale.set(50, 40, 50); // Adjust model size as needed
         tienda.position.set(-30, -100, -50); 
         scene.add(tienda);
         loaderContainer.style.display = 'none'; // Hide loader
@@ -104,8 +105,8 @@ function init() {
 
     /* Moving Stars */
     let starsGeometry = new THREE.Geometry();
-    for (let i = 0; i < 50; i++) {
-        let particleStar = randomPointSphere(150);
+    for (let i = 0; i < 150; i++) {
+        let particleStar = randomPointSphere(250);
 
         particleStar.velocity = THREE.MathUtils.randInt(50, 200);
         particleStar.startX = particleStar.x;
