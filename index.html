@@ -1,102 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tienda Lizboa - Alquimizando Experiencia</title>
-        <meta name="description" content="Tienda Lizboa offers a unique experience, blending craftsmanship and modernity in each product. Discover our collection and book your appointment today.">
-        <link rel="stylesheet" href="./style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Lizboa - Alquimizando Experiencia</title>
+    <meta name="description" content="Tienda Lizboa offers a unique experience, blending craftsmanship and modernity in each product. Discover our collection and book your appointment today.">
+    <link rel="stylesheet" href="./style.css">
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Tienda Lizboa - Alquimizando Experiencia">
+    <meta property="og:description" content="Experience the fusion of craftsmanship and modernity at Tienda Lizboa. Explore our collection and book your appointment now.">
+    <meta property="og:image" content="assets/og-image.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:type" content="website">
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tienda Lizboa - Alquimizando Experiencia">
+    <meta name="twitter:description" content="Discover a unique shopping experience at Tienda Lizboa. Browse our collection and book your appointment today.">
+    <meta name="twitter:image" content="assets/og-image.jpg">
+    <!-- Font and favicon links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="fixed-button left-button">
+        <i id="playPauseIcon" class="fas fa-play" aria-label="Play/Pause Button"></i>
+        <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" aria-label="Volume Control" style="display: none;">
+    </div>
+    <div class="fixed-button right-button">
+        <a href="https://www.instagram.com/tiendalizboa" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 50 50">
+                <path fill="#ACD3CA" d="M 16 3 C 8.83 3 3 8.83 3 16 L 3 34 C 3 41.17 8.83 47 16 47 L 34 47 C 41.17 47 47 41.17 47 34 L 47 16 C 47 8.83 41.17 3 34 3 L 16 3 z M 37 11 C 38.1 11 39 11.9 39 13 C 39 14.1 38.1 15 37 15 C 35.9 15 35 14.1 35 13 C 35 11.9 35.9 11 37 11 z M 25 14 C 31.07 14 36 18.93 36 25 C 36 31.07 31.07 36 25 36 C 18.93 36 14 31.07 14 25 C 14 18.93 18.93 14 25 14 z M 25 16 C 20.04 16 16 20.04 16 25 C 16 29.96 20.04 34 25 34 C 29.96 34 34 29.96 34 25 C 34 20.04 29.96 16 25 16 z"></path>
+            </svg>
+        </a>
+    </div>
+    <div class="logo">
+        <img src="assets/LOGO.png" alt="Tienda Lizboa Logo" height="auto">
+    </div>
 
-        <!-- Open Graph meta tags for social media sharing -->
-        <meta property="og:title" content="Tienda Lizboa - Alquimizando Experiencia">
-        <meta property="og:description" content="Experience the fusion of craftsmanship and modernity at Tienda Lizboa. Explore our collection and book your appointment now.">
-        <meta property="og:image" content="assets/og-image.jpg">
-        <meta property="og:url" content="https://example.com">
-        <meta property="og:type" content="website">
-
-        <!-- Twitter Card meta tags -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Tienda Lizboa - Alquimizando Experiencia">
-        <meta name="twitter:description" content="Discover a unique shopping experience at Tienda Lizboa. Browse our collection and book your appointment today.">
-        <meta name="twitter:image" content="assets/og-image.jpg">
-
-        <!-- Font and favicon links -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-        <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-
-        <!-- JavaScript defer for better performance -->
-        <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    </head>
-    <body>
-        <div class="fixed-button left-button">
-            <img id="playPauseIcon" src="assets/play.png" alt="Play Button" aria-label="Play/Pause Button" />
+    <!-- Main content -->
+    <main>
+        <div id="canvas_container" role="presentation"></div>
+        <div class="button-container">
+            <div class="btn-cita button-85">
+                <a href="https://wa.me/5491159904242" target="_blank" rel="noopener noreferrer" aria-label="Book Your Appointment">Pedí tu cita</a>
+            </div>
+            <div class="btn-works button-85">
+                <a href="https://tiendalizboa.empretienda.com.ar/productos" target="_blank" aria-label="Visit the Store">Tienda</a>
+            </div>
         </div>
-        <div class="fixed-button right-button">
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <img src="assets/instagram.png" alt="Instagram Button" />
-            </a>
+
+        <div id="loader" style="display: flex; flex-direction: column; align-items: center;" aria-live="polite">
+            <div class="spinner" role="status" aria-label="Loading..."></div>
+            <p style="margin-top: 1rem;">alquimizando experiencia.</p>
         </div>
-            <div class="logo">
-                <img src="assets/LOGO.png" alt="Tienda Lizboa Logo"height="auto">
-            </div>
+    </main>
 
-        <!-- Main content -->
-        <main>
-            <div id="canvas_container" role="presentation"></div>
-            <div class="button-container">
-                <div class="btn-cita button-85">
-                    <a href="https://wa.me/5491159904242" target="_blank" rel="noopener noreferrer" aria-label="Book Your Appointment">Pedí tu cita</a>
-                </div>
-                <div class="btn-works button-85">
-                    <a href="https://tiendalizboa.empretienda.com.ar/productos" target="_blank" aria-label="Visit the Store">Tienda</a>
-                </div>
-            </div>
+    <!-- Audio element -->
+    <audio id="backgroundAudio" src="assets/dreaming.mp3" preload="auto"></audio>
 
-            <div id="loader" style="display: flex; flex-direction: column; align-items: center;" aria-live="polite">
-                <div class="spinner" role="status" aria-label="Loading..."></div>
-                <p style="margin-top: 1rem;">alquimizando experiencia.</p>
-            </div>
+    <!-- JavaScript -->
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/js/loaders/GLTFLoader.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/js/controls/OrbitControls.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <script defer src="./script.js"></script>
 
-          
-        </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const playPauseIcon = document.getElementById('playPauseIcon');
+            const audio = document.getElementById('backgroundAudio');
+            const volumeControl = document.getElementById('volumeControl');
 
-        <!-- JavaScript -->
-        <script defer src="https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.min.js"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/js/loaders/GLTFLoader.js"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/js/controls/OrbitControls.js"></script>
-        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
-        <script defer src="./script.js"></script>
-
-        <script>
-            
-            const music = document.getElementById('background-music');
-            const pauseButton = document.getElementById('pause');
-            const fromPauseToPlay = document.getElementById('from_pause_to_play');
-            const fromPlayToPause = document.getElementById('from_play_to_pause');
-
-            // Toggle play/pause state when the button is clicked
-            pauseButton.addEventListener('click', () => {
-                if (music.paused) {
-                    music.play();
-                    pauseButton.classList.remove('paused');
-                    pauseButton.classList.add('playing');
-                    fromPauseToPlay.beginElement();
+            // Toggle play/pause
+            playPauseIcon.addEventListener('click', function () {
+                if (audio.paused) {
+                    audio.play();
+                    playPauseIcon.src = 'assets/stop.png'; // Change icon to pause
+                    playPauseIcon.alt = 'Pause Button';
+                    volumeControl.style.display = 'block'; // Show volume control
                 } else {
-                    music.pause();
-                    pauseButton.classList.remove('playing');
-                    pauseButton.classList.add('paused');
-                    fromPlayToPause.beginElement();
+                    audio.pause();
+                    playPauseIcon.src = 'assets/play.png'; // Change icon to play
+                    playPauseIcon.alt = 'Play Button';
+                    volumeControl.style.display = 'none'; // Hide volume control
                 }
             });
 
-            // Automatically play music when the page loads
-            window.addEventListener('load', () => {
-                music.play();
-                pauseButton.classList.add('playing');
+            // Update audio volume
+            volumeControl.addEventListener('input', function () {
+                audio.volume = volumeControl.value;
             });
-        </script>
-    </body>
+        });
+    </script>
+</body>
 </html>
