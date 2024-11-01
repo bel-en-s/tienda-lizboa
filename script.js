@@ -20,15 +20,12 @@ function init() {
     scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.01, 1000);
-    camera.position.set(-29.40, 50, -200); 
-
-    // Single, soft light for the entire scene
+    camera.position.set(-23.40, 71, -300); 
     const light = new THREE.AmbientLight("#cdf0ff", 0.7);
     scene.add(light);
-    
-    // // Optional: Add a point light for subtle accent lighting
-    const pointLight = new THREE.PointLight("#ffffff", 0.87, 200); // Low intensity for subtle lighting
-    pointLight.position.set(0, 50, 0); // Positioned above the scene to simulate bounce lighting
+
+    const pointLight = new THREE.PointLight("#ffffff", 0.87, 200);
+    pointLight.position.set(0, 50, 0);
     scene.add(pointLight);
     
     renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -119,14 +116,13 @@ function init() {
         size: 5,
         color: "#ffffff",
         transparent: true,
-        opacity: 0.8,
+        opacity: 0.2,
         map: textureStar,
         blending: THREE.AdditiveBlending,
     });
     starsMaterial.depthWrite = false;
     stars = new THREE.Points(starsGeometry, starsMaterial);
     scene.add(stars);
-
     /* Fixed Stars */
     // function createStars(texture, size, total) {
     //     let pointGeometry = new THREE.Geometry();
@@ -149,7 +145,7 @@ function init() {
 
     /* Random point generator for stars */
     function randomPointSphere(radius) {
-        let theta = 2 * Math.PI * Math.random();
+        let theta = 1 * Math.PI * Math.random();
         let phi = Math.acos(2 * Math.random() - 1);
         let dx = 0 + (radius * Math.sin(phi) * Math.cos(theta));
         let dy = 0 + (radius * Math.sin(phi) * Math.sin(theta));

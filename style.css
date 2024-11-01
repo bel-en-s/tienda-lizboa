@@ -26,6 +26,10 @@ canvas {
     font-weight: 300;
     font-stretch: 160%;
     mix-blend-mode: difference;
+
+    @media (max-width: 768px) {
+        top: 25%;
+    }
 }
 
 /* Fixed Buttons */
@@ -131,7 +135,6 @@ button {
     display: block;
     width: 100%;
     height: 100%;
-    transform: scaleY(2.2);
     text-align: center;
     line-height: 1.5;
     font-family: 'Roboto', sans-serif; 
@@ -169,7 +172,7 @@ button {
 
 .button-85:before {
     content: "";
-    background: linear-gradient(45deg, #ACD3CA, #88B3A9, #75A89B, #629D8D, #4F927F, #3B8771, #297C64, #1E7158, #14654C);
+    background: linear-gradient(45deg, #FFC107, #FF9800, #FF69B4, #9C27B0, #673AB7, #3F51B5, #2196F3, #03A9F4, #00BCD4, #009688, #4CAF50, #8BC34A, #CDDC39);
     position: absolute;
     top: -2px;
     left: -2px;
