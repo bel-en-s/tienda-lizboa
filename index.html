@@ -26,15 +26,13 @@
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-    <div class="fixed-button left-button">
-        <i id="playPauseIcon" class="fas fa-play" aria-label="Play/Pause Button"></i>
-        <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" aria-label="Volume Control" style="display: none;">
+    <div class="fixed-button left-button" style="filter: invert(100%); display: flex; align-items: center;">
+        <img id="playPauseIcon" src="assets/suena.svg" alt="Play Button" style="filter: invert(100%); cursor: pointer;" height="40" width="40">
+        <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" aria-label="Volume Control" style="margin-left: 10px;">
     </div>
-    <div class="fixed-button right-button">
+    <div class="fixed-button right-button" style="filter: invert(100%);">
         <a href="https://www.instagram.com/tiendalizboa" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 50 50">
-                <path fill="#ACD3CA" d="M 16 3 C 8.83 3 3 8.83 3 16 L 3 34 C 3 41.17 8.83 47 16 47 L 34 47 C 41.17 47 47 41.17 47 34 L 47 16 C 47 8.83 41.17 3 34 3 L 16 3 z M 37 11 C 38.1 11 39 11.9 39 13 C 39 14.1 38.1 15 37 15 C 35.9 15 35 14.1 35 13 C 35 11.9 35.9 11 37 11 z M 25 14 C 31.07 14 36 18.93 36 25 C 36 31.07 31.07 36 25 36 C 18.93 36 14 31.07 14 25 C 14 18.93 18.93 14 25 14 z M 25 16 C 20.04 16 16 20.04 16 25 C 16 29.96 20.04 34 25 34 C 29.96 34 34 29.96 34 25 C 34 20.04 29.96 16 25 16 z"></path>
-            </svg>
+            <img src="assets/instagram1.svg" alt="Instagram" height="40" width="40" style="filter: invert(100%);">
         </a>
     </div>
     <div class="logo">
@@ -60,7 +58,7 @@
     </main>
 
     <!-- Audio element -->
-    <audio id="backgroundAudio" src="assets/dreaming.mp3" preload="auto"></audio>
+    <audio id="backgroundAudio" src="assets/mirruña.wav" preload="auto"></audio>
 
     <!-- JavaScript -->
     <script defer src="https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.min.js"></script>
@@ -75,18 +73,25 @@
             const audio = document.getElementById('backgroundAudio');
             const volumeControl = document.getElementById('volumeControl');
 
+            // Start playing with volume at 50%
+            audio.volume = 0.5;
+            audio.autoplay = true;
+            audio.play();
+            playPauseIcon.src = 'assets/stop.png'; // Change icon to pause
+            playPauseIcon.alt = 'Pause Button';
+            volumeControl.style.display = 'block'; // Show volume control
+            volumeControl.value = 0.5; // Set initial volume to 50%
+
             // Toggle play/pause
             playPauseIcon.addEventListener('click', function () {
                 if (audio.paused) {
                     audio.play();
                     playPauseIcon.src = 'assets/stop.png'; // Change icon to pause
                     playPauseIcon.alt = 'Pause Button';
-                    volumeControl.style.display = 'block'; // Show volume control
                 } else {
                     audio.pause();
                     playPauseIcon.src = 'assets/play.png'; // Change icon to play
                     playPauseIcon.alt = 'Play Button';
-                    volumeControl.style.display = 'none'; // Hide volume control
                 }
             });
 

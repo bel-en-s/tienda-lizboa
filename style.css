@@ -39,9 +39,12 @@ canvas {
     z-index: 1000;
 
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
+.fixed-button:hover {
+    filter: drop-shadow(0 0 5px #FFC107) drop-shadow(0 0 5px #FF9800) drop-shadow(0 0 5px #FF69B4) drop-shadow(0 0 5px #9C27B0) drop-shadow(0 0 5px #673AB7) drop-shadow(0 0 5px #3F51B5) drop-shadow(0 0 5px #2196F3) drop-shadow(0 0 5px #03A9F4) drop-shadow(0 0 5px #00BCD4) drop-shadow(0 0 5px #009688) drop-shadow(0 0 5px #4CAF50) drop-shadow(0 0 5px #8BC34A);
+}
 .left-button {
     left: 10px;
 }
@@ -89,7 +92,7 @@ button {
     color: white;
     mix-blend-mode: difference;
     cursor: pointer;
-    background: #ACD3CA;
+    background: #ffffff;
     transition: all 0.3s;
 }
 
@@ -101,6 +104,12 @@ button {
     }
 }
 
+@media (min-width: 768px) {
+    button:not(:hover) {
+        transition: all 0.5s ease-in-out;
+    }
+}
+
 /* Loader Styles */
 #loader {
     position: fixed;
@@ -108,21 +117,39 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(45deg, #FFC107 0%, #FFA000 5%, #FFC107 10%, #FFB300 15%, #FFC107 20%, #FF9800 25%, #FFC107 30%, #FFA000 35%, #FFC107 40%, #FFB300 45%, #FFC107 50%, #FF9800 55%, #FFC107 60%, #FFA000 65%, #FFC107 70%, #FFB300 75%, #FFC107 80%, #FF9800 85%, #FFC107 90%, #FFA000 95%, #FFC107 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    color: white;
+    color: rgb(0, 0, 0);
     font-family: "Roboto", sans-serif;
-    font-weight: 100;
-    font-style: italic;
+    font-weight: 800;
+    font-size: 1.2rem;
+    animation: loaderAnimation 3s ease-in-out infinite;
+}
+
+@keyframes loaderAnimation {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+@media (min-width: 768px) {
+    #loader {
+        font-size: 1.5rem;
+    }
 }
 
 /* Spinner Animation */
 #loader .spinner {
     border: 6px solid rgba(255, 255, 255, 0.3);
-    border-top: 6px solid white;
+    border-top: 6px solid rgb(0, 0, 0);
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -131,13 +158,21 @@ button {
 
 .button-85 a {
     text-decoration: none;
-    color: black;
+    color: rgb(0, 0, 0);
     display: block;
     width: 100%;
     height: 100%;
     text-align: center;
     line-height: 1.5;
-    font-family: 'Roboto', sans-serif; 
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+    .button-85 a {
+        font-size: 1.2rem;
+    }
 }
 
 .button-85 a:hover {
@@ -155,7 +190,9 @@ button {
     border: none;
     outline: none;
     color: rgb(255, 255, 255);
-    background-color: #ACD3CA;
+    background: linear-gradient(45deg, #FFC107, #FF9800, #FF69B4, #9C27B0, #673AB7, #3F51B5, #2196F3, #03A9F4, #00BCD4, #009688, #4CAF50, #8BC34A, #CDDC39);
+    background-size: 400%;
+    animation: gradient 5s ease infinite;
     cursor: pointer;
     position: relative;
     font-size: 1rem;
@@ -166,23 +203,63 @@ button {
     touch-action: manipulation;
 }
 
+@media (min-width: 768px) {
+    .button-85 {
+        font-size: 1.2rem;
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 .button-85:hover {
-    color: #000;
+    color: #000000;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    transition: all 0.5s ease-in-out;
 }
 
 .button-85:before {
     content: "";
     background: linear-gradient(45deg, #FFC107, #FF9800, #FF69B4, #9C27B0, #673AB7, #3F51B5, #2196F3, #03A9F4, #00BCD4, #009688, #4CAF50, #8BC34A, #CDDC39);
     position: absolute;
-    top: -2px;
-    left: -2px;
+    top: -4px;
+    left: -4px;
     background-size: 400%;
     z-index: -1;
-    filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
+    filter: blur(8px);
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
     animation: glowing-button-85 20s linear infinite;
     border-radius: 10px;
+    transition: all 0.5s ease-in-out;
+}
+
+.button-85:not(:hover):before {
+    transition: all 0.5s ease-in-out;
+}
+
+.button-85:hover:before {
+    filter: blur(16px);
+    background-size: 1000%;
+    animation: glowing-button-85 15s linear infinite;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    transition: all 0.5s ease-in-out;
+}
+
+.button-85:not(:hover):before {
+    animation: glowing-button-85 15s linear infinite;
+    transition: all 0.5s ease-in-out;
 }
 
 @keyframes glowing-button-85 {
@@ -190,3 +267,4 @@ button {
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+

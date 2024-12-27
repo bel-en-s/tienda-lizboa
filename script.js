@@ -65,7 +65,7 @@ function init() {
     // });
 
     const loader = new THREE.TextureLoader();
-    const textureSphereBg = loader.load('assets/sky.jpg');
+    const textureSphereBg = loader.load('assets/sky1.jpg');
     const textureStar = loader.load("https://i.ibb.co/ZKsdYSz/p1-g3zb2a.png");
     const texture1 = loader.load("https://i.ibb.co/F8by6wW/p2-b3gnym.png");
     const texture2 = loader.load("https://i.ibb.co/yYS2yx5/p3-ttfn70.png");
@@ -79,10 +79,15 @@ function init() {
     // const axesHelper = new THREE.AxesHelper(1000);
     // scene.add(axesHelper);
 
-    gltfLoader.load('assets/tienda-final.glb', function (gltf) {
+    gltfLoader.load('assets/tienda.glb', function (gltf) {
         tienda = gltf.scene;
         tienda.scale.set(50, 40, 50); // Adjust model size as needed
-        tienda.position.set(-30, -100, -50); 
+        if (window.innerWidth < 768) {
+            tienda.position.set(-30, -100, -50); 
+            tienda.scale.set(35, 30, 35); // Adjust model size for mobile
+        } else {
+            tienda.position.set(-30, -100, -50); 
+        } 
         scene.add(tienda);
         loaderContainer.style.display = 'none'; // Hide loader
     }, undefined, function (error) {
