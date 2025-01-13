@@ -26,6 +26,7 @@
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
+    <!-- Botones fijos -->
     <div class="fixed-button left-button" style="filter: invert(100%); display: flex; align-items: center;">
         <img id="playPauseIcon" src="assets/suena.svg" alt="Play Button" style="filter: invert(100%); cursor: pointer;" height="40" width="40">
         <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" aria-label="Volume Control" style="margin-left: 10px;">
@@ -39,7 +40,7 @@
         <img src="assets/LOGO.png" alt="Tienda Lizboa Logo" height="auto">
     </div>
 
-    <!-- Main content -->
+    <!-- Contenido principal -->
     <main>
         <div id="canvas_container" role="presentation"></div>
         <div class="button-container">
@@ -57,7 +58,7 @@
         </div>
     </main>
 
-    <!-- Audio element -->
+    <!-- Elemento de audio -->
     <audio id="backgroundAudio" src="assets/mirruña.wav" preload="auto"></audio>
 
     <!-- JavaScript -->
@@ -72,32 +73,58 @@
             const playPauseIcon = document.getElementById('playPauseIcon');
             const audio = document.getElementById('backgroundAudio');
             const volumeControl = document.getElementById('volumeControl');
-
-            // Start playing with volume at 50%
-            audio.volume = 0.5;
-            audio.autoplay = true;
-            audio.play();
-            playPauseIcon.src = 'assets/stop.png'; // Change icon to pause
-            playPauseIcon.alt = 'Pause Button';
-            volumeControl.style.display = 'block'; // Show volume control
-            volumeControl.value = 0.5; // Set initial volume to 50%
-
-            // Toggle play/pause
+    
+            // Configuración inicial del audio
+            audio.volume = 0.5; // Volumen inicial
+            audio.loop = true; // Repetir audio
+            audio.autoplay = true; // Reproducir automáticamente si es posible
+    
+            // Función para actualizar el icono según el estado del audio
+            function updateIcon() {
+                if (audio.paused) {
+                    playPauseIcon.src = 'assets/play.png';
+                    playPauseIcon.alt = 'Play Button';
+                } else {
+                    playPauseIcon.src = 'assets/stop.png';
+                    playPauseIcon.alt = 'Pause Button';
+                }
+            }
+    
+            // Intentar reproducir el audio inicialmente
+            audio.play()
+                .then(() => {
+                    updateIcon(); // Cambiar el icono a "Pause" si el audio se reproduce correctamente
+                })
+                .catch(error => {
+                    console.error('Error al reproducir el audio:', error);
+                    playPauseIcon.src = 'assets/play.png'; // Mantener el icono en "Play" si no se puede reproducir
+                });
+    
+            // Manejar clic en el icono para reproducir/pausar
             playPauseIcon.addEventListener('click', function () {
                 if (audio.paused) {
-                    audio.play();
-                    playPauseIcon.src = 'assets/stop.png'; // Change icon to pause
-                    playPauseIcon.alt = 'Pause Button';
+                    audio.play()
+                        .then(() => {
+                            updateIcon(); // Actualizar a "Pause"
+                        })
+                        .catch(error => {
+                            console.error('Error al intentar reproducir:', error);
+                        });
                 } else {
                     audio.pause();
-                    playPauseIcon.src = 'assets/play.png'; // Change icon to play
-                    playPauseIcon.alt = 'Play Button';
+                    updateIcon(); // Actualizar a "Play"
                 }
             });
-
-            // Update audio volume
+    
+            // Ajustar volumen
             volumeControl.addEventListener('input', function () {
                 audio.volume = volumeControl.value;
+            });
+    
+            // Manejar errores en el audio
+            audio.addEventListener('error', function () {
+                console.error('Error en el audio:', audio.error);
+                playPauseIcon.src = 'assets/play.png'; // Volver a "Play" en caso de error
             });
         });
     </script>
